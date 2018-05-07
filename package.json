@@ -1,0 +1,21 @@
+{
+  "name": "chartApp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "devDependencies": {
+    "fs": "x.x.x",
+    "http": "x.x.x",
+    "socket.io": "^2.1.0"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ],
+  "author": "",
+  "license": "ISC"
+}

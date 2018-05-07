@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Getting Started With Socket</title>
+	<!-- <script src="/socket.io.js"></script> -->
+	<!--<script>
+		var io = require('socket.io');
+		var socket = io.connect("http://localhost:8080");
+		socket.on("news",function(data){
+			var serverMsg = document.getElementById("serverMsg");
+			serverMsg.innerHTML+= data.hello;
+		});
+	</script>
+</head>
+<body>
+	<div id="serverMsg">Waiting For message from Server</div>
+</body>
+</html> -->
+<html>
+
+<head>
+    <title>Getting started with Sockets</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script>
+       /* var socket = io.connect("http://localhost:8080");
+
+        socket.on("news", function (data) {
+            //grab the element for which you've to add the message from server
+            var serverMsg = document.getElementById("serverMsg");
+            //add the message received from server to the element
+            serverMsg.innerHTML += data.hello;
+        });*/
+       // var socket = io.connect("http://192.168.6.7:8080");
+       //var socket = io.connect("http://192.168.31.70:8080");
+      // var socket = io.connect("http://192.168.31.70:5000");
+      var socket = io.connect("http://folkshub.herokuapp.com/");
+      //var socket = io.connect("http://0.0.0.0:5000");
+     // var sockey = io.connect("http://a6f67d03.ngrok.io/");
+        $(function(){
+        	name = window.prompt("enter your name");
+            var objDiv = document.getElementById("msgBox");
+        	if(name==null){
+        		$("body").html("Please refresh the page and try again");
+        	}
+        	$("#send").click(function(){
+        		socket.emit("clientMsg",{
+        			"name":name,
+        			"msg":$("#msg").val()
+        		}); 
+            $("#msg").val("");
+                
+                
+        	});
+        	socket.on("serverMsg", function (data) {
+                //Append the message from the server to the message box
+                $("#msgBox").append("<strong>" + data.name + 
+                "</strong>: " + data.msg + "<br/>");
+                objDiv.scrollTop = objDiv.scrollHeight;
+            });
+            $("#msg").on("keyup", function (event) {
+    		    socket.emit("sender", {
+    		        name: name
+    		    });
+    		    socket.on("sender", function (data) {
+                    $("#status").html(data.name + " is typing");
+                    setTimeout(function () {
+                        $("#status").html('');
+                    }, 3000);
+                });
+                $("#msg").keypress(function (e) {
+                  if (e.keyCode == 13 &&  $("#msg").val()!="") {
+                    e.stopImmediatePropagation();
+                    $("#send").trigger('click');
+                  }
+
+                });
+              /* $(document).keypress(function(e) {
+                    if(e.which == 13) {
+                         $("#msg").toggleClass("Pressed");
+                         if($("#msg").hasClass("Pressed"))
+                      $("#send").trigger('click');
+                    }
+                });*/
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="serverMsg">Waiting for the message from server:</div>
+   <!--  <div id="msgBox" style="height: 200px;width: 400px;border:1px solid blue;"></div> -->
+   <div id="msgBox"   style="height:300px;width:400px;border:solid 2px orange;overflow:scroll;overflow-x:hidden;overflow-y:scroll;"></div>
+    <div>
+    	<input type="text" id="msg" style="width: 300px"/>
+    	<input type="submit" id="send" value="send"/>
+    	<br/>
+    	<div id="status"></div>
+    </div>
+</body>
+
+</html>        

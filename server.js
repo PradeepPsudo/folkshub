@@ -63,18 +63,26 @@ io.socket.on('connection',function(){
 
 
 
+// var app = require('express')();
+// // var http = require('http').Server(app);
+// // var io = require('socket.io')(http);
+// var server = app.listen(process.env.PORT || 5000);
+
+// var io = require('socket.io').listen(server);
+
+// app.get('/', function(req, res) {
+//     res.sendfile('index.html');
+// });
+
+// app.listen(process.env.PORT || 5000);
+
 var app = require('express')();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
-var server = app.listen(process.env.PORT || 5000);
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-var io = require('socket.io').listen(server);
-
-app.get('/', function(req, res) {
-    res.sendfile('index.html');
-});
-
-app.listen(process.env.PORT || 5000);
+// http.listen(3000, function () {
+//   console.log('listening on *:3000');
+// });
 
 
 io.sockets.on('connection', function (socket) {
@@ -92,3 +100,7 @@ io.sockets.on('connection', function (socket) {
 		    socket.broadcast.emit("sender", data); //Broadcast the user typing to 
 		});
 });
+
+http.listen(process.env.PORT || 5000, function () {
+	console.log('listening on *');
+  });

@@ -33,7 +33,10 @@
        // var socket = io.connect("http://192.168.6.7:8080");
        //var socket = io.connect("http://192.168.31.70:8080");
       // var socket = io.connect("http://192.168.31.70:5000");
-      var socket = io.connect("https://folkshub.netlify.app/");
+     // var socket = io.connect("https://folkshub.netlify.app/");
+     var  socket = io.connect('https://folkshub.netlify.app', {
+    reconnect: true
+});
       //var socket = io.connect("http://0.0.0.0:5000");
      // var sockey = io.connect("http://a6f67d03.ngrok.io/");
         $(function(){

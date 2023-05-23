@@ -64,8 +64,11 @@ io.socket.on('connection',function(){
 
 
 var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+var server = app.listen(process.env.PORT || 5000);
+
+var io = require('socket.io').listen(server);
 
 app.get('/', function(req, res) {
     res.sendfile('index.html');

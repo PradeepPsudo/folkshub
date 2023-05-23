@@ -142,7 +142,7 @@ const io = require("socket.io")(server, {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/folkshub.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 // io.on('connection', (socket) => {

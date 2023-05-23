@@ -8,7 +8,6 @@
     "start": "node server.js"
   },
   "devDependencies": {
-    "@types/socket.io": "^3.0.2",
     "fs": "x.x.x",
     "http": "x.x.x"
   },

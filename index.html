@@ -19,7 +19,7 @@
 
 <head>
     <title>Getting started with Sockets</title>
-    <script src="/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
        /* var socket = io.connect("http://localhost:8080");
@@ -34,9 +34,16 @@
        //var socket = io.connect("http://192.168.31.70:8080");
       // var socket = io.connect("http://192.168.31.70:5000");
      // var socket = io.connect("https://folkshub.netlify.app/");
-     var  socket = io.connect('https://folkshub.netlify.app', {
-    reconnect: true
-});
+//      var  socket = io.connect('https://folkshub.netlify.app', {
+//     reconnect: true
+// });
+// var  socket = io.connect('https://localhost:3000', {
+//     reconnect: true
+// });
+
+const socket = io({reconnect: true});
+
+
       //var socket = io.connect("http://0.0.0.0:5000");
      // var sockey = io.connect("http://a6f67d03.ngrok.io/");
         $(function(){
@@ -46,6 +53,7 @@
         		$("body").html("Please refresh the page and try again");
         	}
         	$("#send").click(function(){
+                debugger;
         		socket.emit("clientMsg",{
         			"name":name,
         			"msg":$("#msg").val()
@@ -55,6 +63,7 @@
                 
         	});
         	socket.on("serverMsg", function (data) {
+                debugger;
                 //Append the message from the server to the message box
                 $("#msgBox").append("<strong>" + data.name + 
                 "</strong>: " + data.msg + "<br/>");

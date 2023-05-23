@@ -76,31 +76,79 @@ io.socket.on('connection',function(){
 
 // app.listen(process.env.PORT || 5000);
 
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+// var app = require('express')();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
 
-// http.listen(3000, function () {
-//   console.log('listening on *:3000');
+// // http.listen(3000, function () {
+// //   console.log('listening on *:3000');
+// // });
+
+
+// io.sockets.on('connection', function (socket) {
+// 	console.log("i am inside socket");
+//    /* socket.emit('news', {
+//         hello: 'world'
+//     });*/
+//     //socket.on('connection', function (data) {
+//         socket.on("clientMsg",function(data){
+//         	socket.emit("serverMsg",data);
+//         	socket.broadcast.emit("serverMsg", data);
+//         });
+//         socket.on("sender", function (data) {
+// 		    socket.emit("sender", data);
+// 		    socket.broadcast.emit("sender", data); //Broadcast the user typing to 
+// 		});
 // });
 
+// // http.listen(process.env.PORT || 5000, function () {
+// // 	console.log('listening on *');
+// //   });
 
-io.sockets.on('connection', function (socket) {
+// http.listen(4000, function () {
+// 	console.log('listening on *:3000');
+//   });
+
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+// const { Server } = require("socket.io");
+// const io = new Server(server);
+
+const io = require("socket.io")(server, {
+	// ...
+  });
+  
+//   io.on("connection", (socket) => {
+// 	// ...
+//   });
+  io.sockets.on('connection', function (socket) {
 	console.log("i am inside socket");
    /* socket.emit('news', {
         hello: 'world'
     });*/
     //socket.on('connection', function (data) {
         socket.on("clientMsg",function(data){
+			console.log("clientMsg data:",data);
         	socket.emit("serverMsg",data);
         	socket.broadcast.emit("serverMsg", data);
         });
         socket.on("sender", function (data) {
+			console.log("sender data:",data);
 		    socket.emit("sender", data);
 		    socket.broadcast.emit("sender", data); //Broadcast the user typing to 
 		});
 });
 
-http.listen(process.env.PORT || 5000, function () {
-	console.log('listening on *');
-  });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/folkshub.html');
+});
+
+// io.on('connection', (socket) => {
+//   console.log('a user connected');
+// });
+
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});

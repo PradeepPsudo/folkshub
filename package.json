@@ -8,14 +8,18 @@
     "start": "node server.js"
   },
   "devDependencies": {
+    "@types/socket.io": "^3.0.2",
     "fs": "x.x.x",
-    "http": "x.x.x",
-    "socket.io": "^2.1.0"
+    "http": "x.x.x"
   },
   "keywords": [
     "node",
     "heroku"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  }
 }

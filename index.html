@@ -226,9 +226,9 @@ body {
 </style>
 <script>
 
-const socket = io({transports: ['websocket', 'polling', 'flashsocket']});
+const socket = io();
 // socket.set( 'origins', '*' );
-socket.on("connect_error", () => {
+socket.on("connect_error", (error) => {
     debugger;
  // socket.auth.token = "abcd";
   socket.connect();

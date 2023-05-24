@@ -226,7 +226,7 @@ body {
 </style>
 <script>
 
-const socket = io('/',{reconnect: true,forceNew: true});
+const socket = io('/',{  transports: ["websocket"],reconnect: true,forceNew: true, autoConnect: false});
 
 
 //var socket = io.connect("http://0.0.0.0:5000");

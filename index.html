@@ -226,7 +226,8 @@ body {
 </style>
 <script>
 
-const socket = io({ "rejectUnauthorized" : false});
+const socket = io({transports: ['websocket', 'polling', 'flashsocket']});
+socket.set( 'origins', '*' );
 socket.on("connect_error", () => {
     debugger;
  // socket.auth.token = "abcd";

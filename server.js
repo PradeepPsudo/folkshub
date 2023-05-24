@@ -123,7 +123,7 @@ const io = require("socket.io")(server, {
 //   io.on("connection", (socket) => {
 // 	// ...
 //   });
-  io.sockets.on('connection', function (socket) {
+  io.sockets.on('connect', function (socket) {
 	console.log("i am inside socket");
    /* socket.emit('news', {
         hello: 'world'
@@ -149,6 +149,6 @@ app.get('/', (req, res) => {
 //   console.log('a user connected');
 // });
 
-server.listen(process?.env?.PORT || 5000, () => {
+server.listen(process?.env?.PORT || 3000, () => {
   console.log('listening on *:3000');
 });

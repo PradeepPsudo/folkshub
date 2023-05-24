@@ -149,6 +149,6 @@ app.get('/', (req, res) => {
 //   console.log('a user connected');
 // });
 
-server.listen(process.env.PORT || 5000, () => {
+server.listen(3333, () => {
   console.log('listening on *:3000');
 });

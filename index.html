@@ -227,7 +227,7 @@ body {
 <script>
 
 const socket = io({transports: ['websocket', 'polling', 'flashsocket']});
-socket.set( 'origins', '*' );
+// socket.set( 'origins', '*' );
 socket.on("connect_error", () => {
     debugger;
  // socket.auth.token = "abcd";

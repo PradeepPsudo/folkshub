@@ -240,6 +240,29 @@ body {
       to avoid connecting the SDK to running emulators.
     -->
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBtfb57KqM-gNz43qz4m7xw4rXCdV0B0JA",
+        authDomain: "folkshub-bfa71.firebaseapp.com",
+        projectId: "folkshub-bfa71",
+        storageBucket: "folkshub-bfa71.appspot.com",
+        messagingSenderId: "247199685835",
+        appId: "1:247199685835:web:2730a7d912ad7c5c5c0f4e",
+        measurementId: "G-M6VY6JZM0W"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
     <script>
 
       const socket = io();

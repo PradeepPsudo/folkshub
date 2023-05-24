@@ -229,7 +229,7 @@ body {
 const socket = io({ "rejectUnauthorized" : false});
 socket.on("connect_error", () => {
     debugger;
-  socket.auth.token = "abcd";
+ // socket.auth.token = "abcd";
   socket.connect();
 });
 

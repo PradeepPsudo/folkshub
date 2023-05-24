@@ -227,7 +227,11 @@ body {
 <script>
 
 const socket = io({ "rejectUnauthorized" : false});
-
+socket.on("connect_error", () => {
+    debugger;
+  socket.auth.token = "abcd";
+  socket.connect();
+});
 
 //var socket = io.connect("http://0.0.0.0:5000");
 // var sockey = io.connect("http://a6f67d03.ngrok.io/");
